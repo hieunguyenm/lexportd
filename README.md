@@ -4,7 +4,7 @@ Snapshot and export LXC containers using LXD socket API (**L**e**X**port**D**).
 
 ## Usage
 
-**Note:** The LXD socket may be accessible to `root` only so it is preferable to run `go build` instead of `go run`.
+**Note:** The LXD socket may be accessible to `root` only so it is preferable to run `go build` instead of `go run` if you do not want to always be inside of `GOPATH`.
 
 ```bash
 ./lexportd [args...]
