@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"lexportd/operations"
 	"lexportd/utils"
 	"log"
@@ -63,23 +62,22 @@ func main() {
 	// Export and write snapshots
 	images, err := operations.ListImages(client)
 	if err != nil {
-		log.Fatalf("failed to list images: %v", err)
+		log.Fatalf("failed to list images: %v\n", err)
 	}
 	for _, v := range images {
-		fmt.Println(v)
 		data, err := operations.ExportImage(client, v)
 		if err != nil {
-			log.Fatalf("failed to export images: %v", err)
+			log.Fatalf("failed to export images: %v\n", err)
 		}
 		name, err := operations.GetImageFilename(client, v)
 		if err != nil {
-			log.Fatalf("failed to get filename for %q: %v", v, err)
+			log.Fatalf("failed to get filename for %q: %v\n", v, err)
 		}
 		log.Printf("Exporting %s\n", name)
 		n, err := utils.WriteSnapshot(*out, name, data)
 		if err != nil {
-			log.Fatalf("failed to write snapshot for %q: %v", name, err)
+			log.Fatalf("failed to write snapshot for %q: %v\n", name, err)
 		}
-		log.Printf("%s: wrote %d bytes", name, n)
+		log.Printf("%s: wrote %d bytes\n", name, n)
 	}
 }
