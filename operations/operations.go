@@ -57,7 +57,7 @@ func SnapshotContainer(client *httputil.ClientConn, url string) (string, error) 
 // PublishSnapshot publishes a private image of a container snapshot.
 func PublishSnapshot(client *httputil.ClientConn, containerName, snapshotName string) error {
 	req, err := json.Marshal(&utils.PublishRequest{
-		Filename: snapshotName + "tar.xz",
+		Filename: snapshotName + ".tar.xz",
 		Public:   false,
 		Aliases: []utils.PublishRequestAliases{
 			utils.PublishRequestAliases{
